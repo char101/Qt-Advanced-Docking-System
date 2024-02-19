@@ -1,8 +1,8 @@
-%Module(name=PyQtAds, call_super_init=True, keyword_arguments="Optional", use_limited_api=True)
+%Module(name=PyQt6.QtAds, call_super_init=True, keyword_arguments="Optional", use_limited_api=True)
 %HideNamespace(name=ads)
 
 %Import QtCore/QtCoremod.sip
-%DefaultSupertype sip.simplewrapper
+%DefaultSupertype PyQt6.sip.simplewrapper
 
 %Include ads_globals.sip
 %Include AutoHideDockContainer.sip
@@ -27,6 +27,6 @@
 %Include IconProvider.sip
 %Include PushButton.sip
 %Include ResizeHandle.sip
-%If (WS_X11)
-    %Include linux/FloatingWidgetTitleBar.sip
+%If (Linux)
+	%Include linux/FloatingWidgetTitleBar.sip
 %End

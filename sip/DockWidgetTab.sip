@@ -1,16 +1,14 @@
 %Import QtWidgets/QtWidgetsmod.sip
 
-%If (Qt_5_0_0 -)
-
 namespace ads
 {
 
 class CDockWidgetTab : QFrame
 {
-    %TypeHeaderCode
-    #include <DockWidgetTab.h>
-    %End
-    
+	%TypeHeaderCode
+	#include <DockWidgetTab.h>
+	%End
+
 protected:
 	virtual void mousePressEvent(QMouseEvent* ev);
 	virtual void mouseReleaseEvent(QMouseEvent* ev);
@@ -19,13 +17,13 @@ protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent *event);
 
 public:
-	CDockWidgetTab(ads::CDockWidget* DockWidget /TransferThis/, QWidget* parent /TransferThis/ = 0);
+	CDockWidgetTab(CDockWidget* DockWidget /TransferThis/, QWidget* parent /TransferThis/ = nullptr);
 	virtual ~CDockWidgetTab();
 	bool isActiveTab() const;
 	void setActiveTab(bool active);
-	void setDockAreaWidget(ads::CDockAreaWidget* DockArea /Transfer/);
-	ads::CDockAreaWidget* dockAreaWidget() const;
-	ads::CDockWidget* dockWidget() const;
+	void setDockAreaWidget(CDockAreaWidget* DockArea /Transfer/);
+	CDockAreaWidget* dockAreaWidget() const;
+	CDockWidget* dockWidget() const;
 	void setIcon(const QIcon& Icon);
 	const QIcon& icon() const;
 	QString text() const;
@@ -34,9 +32,9 @@ public:
 	bool isClosable() const;
 	virtual bool event(QEvent *e);
 	void setElideMode(Qt::TextElideMode mode);
-    void updateStyle();
-    QSize iconSize() const;
-    void setIconSize(const QSize& Size);
+	void updateStyle();
+	QSize iconSize() const;
+	void setIconSize(const QSize& Size);
 
 public slots:
 	virtual void setVisible(bool visible);
@@ -48,8 +46,6 @@ signals:
 	void closeOtherTabsRequested();
 	void moved(const QPoint& GlobalPos);
 	void elidedChanged(bool elided);
-}; // class DockWidgetTab
 };
- // namespace ads
 
-%End
+};

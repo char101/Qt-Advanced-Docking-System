@@ -1,21 +1,21 @@
 %Import QtWidgets/QtWidgetsmod.sip
 
-%If (Qt_5_0_0 -)
-
 namespace ads
 {
 
 class CTitleBarButton : QToolButton
 {
-    %TypeHeaderCode
-    #include <DockAreaTitleBar.h>
-    %End
-    
+	%TypeHeaderCode
+	#include <DockAreaTitleBar.h>
+	%End
+
 public:
-	CTitleBarButton(bool visible = true, QWidget* parent /TransferThis/ = Q_NULLPTR );
+	CTitleBarButton(bool ShowInTitleBar, bool HideWhenDisabled, TitleBarButton ButtonId, QWidget* parent /TransferThis/ = Q_NULLPTR );
 	virtual void setVisible(bool);
 	void setShowInTitleBar(bool);
-
+	TitleBarButton buttonId() const;
+	CDockAreaTitleBar* titleBar() const;
+	bool isInAutoHideArea() const;
 
 protected:
 	bool event(QEvent *ev);
@@ -23,9 +23,9 @@ protected:
 
 class CDockAreaTitleBar : QFrame
 {
-    %TypeHeaderCode
-    #include <DockAreaTitleBar.h>
-    %End
+	%TypeHeaderCode
+	#include <DockAreaTitleBar.h>
+	%End
 
 protected:
 	virtual void mousePressEvent(QMouseEvent* ev);
@@ -41,21 +41,21 @@ public slots:
 public:
 	CDockAreaTitleBar(ads::CDockAreaWidget* parent /TransferThis/);
 	virtual ~CDockAreaTitleBar();
-	ads::CDockAreaTabBar* tabBar() const;
-	ads::CTitleBarButton* button(ads::TitleBarButton which) const;
-    ads::CElidingLabel* autoHideTitleLabel() const;
- 	void updateDockWidgetActionsButtons();
+	CDockAreaTabBar* tabBar() const;
+	CTitleBarButton* button(ads::TitleBarButton which) const;
+	CElidingLabel* autoHideTitleLabel() const;
+	CDockAreaWidget* dockAreaWidget() const;
+	void updateDockWidgetActionsButtons();
 	virtual void setVisible(bool Visible);
-	void insertWidget(int index, QWidget *widget /Transfer/ );
+	void insertWidget(int index, QWidget *widget /Transfer/);
 	int indexOf(QWidget *widget) const;
-    QString titleBarButtonToolTip(ads::TitleBarButton Button) const;
-    void setAreaFloating();
-    
+	QString titleBarButtonToolTip(ads::TitleBarButton Button) const;
+	void setAreaFloating();
+	void showAutoHideControls(bool Show);
+	bool isAutoHide() const;
 
 signals:
 	void tabBarClicked(int index);
 };
 
 };
-
-%End

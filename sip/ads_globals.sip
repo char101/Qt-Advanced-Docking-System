@@ -1,7 +1,5 @@
 %Import QtWidgets/QtWidgetsmod.sip
 
-%If (Qt_5_0_0 -)
-
 %ModuleHeaderCode
 PyObject *qtads_FindParent(PyObject* type, const QWidget *child);
 %End
@@ -73,7 +71,8 @@ namespace ads
         TitleBarButtonTabsMenu,
         TitleBarButtonUndock,
         TitleBarButtonClose,
-        TitleBarButtonAutoHide
+        TitleBarButtonAutoHide,
+        TitleBarButtonMinimize
     };
 
     enum eDragState
@@ -91,6 +90,7 @@ namespace ads
         DockAreaMenuIcon,
         DockAreaUndockIcon,
         DockAreaCloseIcon,
+        DockAreaMinimizeIcon,
         IconCount,
     };
 
@@ -158,5 +158,3 @@ namespace ads
     };
 
 };
-
-%End
