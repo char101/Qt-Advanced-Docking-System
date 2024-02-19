@@ -387,6 +387,8 @@ void CDockAreaTabBar::onTabWidgetMoved(const QPoint& GlobalPos)
 	{
 		return;
 	}
+	// fix signal still connected to old widget
+	if (count() == 0) return;
 
 	int fromIndex = d->TabsLayout->indexOf(MovingTab);
 	auto MousePos = mapFromGlobal(GlobalPos);

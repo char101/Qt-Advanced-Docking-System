@@ -1,7 +1,5 @@
 %Import QtWidgets/QtWidgetsmod.sip
 
-%If (Qt_5_0_0 -)
-
 namespace ads
 {
 
@@ -40,5 +38,3 @@ public:
 };
 
 };
-
-%End

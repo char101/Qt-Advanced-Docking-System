@@ -1,7 +1,5 @@
 %Import QtWidgets/QtWidgetsmod.sip
 
-%If (Qt_5_0_0 -)
-
 %ModuleHeaderCode
 PyObject *qtads_FindParent(PyObject* type, const QWidget *child);
 %End
@@ -92,6 +90,7 @@ namespace ads
         DockAreaMenuIcon,
         DockAreaUndockIcon,
         DockAreaCloseIcon,
+        DockAreaMinimizeIcon,
         IconCount,
     };
 
@@ -159,5 +158,3 @@ namespace ads
     };
 
 };
-
-%End
